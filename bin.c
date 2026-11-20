@@ -5,9 +5,8 @@ int strlenght(char string[]) { // Funktion um die Länge eines Strings herauszuf
     for (; string[i] =! '\0'; i++) {
         if (string[i] =! ('0'||'1')) {
             return -1;
-        }
-    }
-        
+        }   
+    }      
     return i;
 }
 
@@ -26,16 +25,17 @@ int main(int argc, char* argv[])
         return -1;
     }
 
-    else {
-        int len = strlenght(argv[1]);
-        if (len == -1) {
-            printf("Usage: bin <binary number>");
-            return -1;
-        }
-        for (; len > -1; len--) {
-            power(2, len);
-        }
-
-        return 0;
+    int len = strlenght(argv[1]);
+    if (len == -1) {
+        printf("Usage: bin <binary number>");
+        return -1;
     }
+
+    int erg;
+    for (int i = 0; i < len; i++) {
+        erg = erg + power(2, i);
+    }
+    
+    printf("Deine Binärzahl ist im Dizamlsystem eine %d", erg);
+    return 0;
 }
